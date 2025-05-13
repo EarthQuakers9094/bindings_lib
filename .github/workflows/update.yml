@@ -1,7 +1,7 @@
 # copied and modified from https://github.com/BroncBotz3481/YAGSL-Lib/blob/2025/.github/workflows/update.yml 
 # because i have  no idea what im doing.
 
-name: Build and Publish YAGSL vendordep
+name: Build and Publish Bindings vendordep
 on:
   workflow_dispatch:
     inputs:
