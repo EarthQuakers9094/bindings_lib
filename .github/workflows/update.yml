@@ -33,6 +33,14 @@ jobs:
       - name: Removing source repo
         run: |
           rm -rf Bindings
+      - name: Setup Kotlin
+        uses: fwilhe2/setup-kotlin@0.2.0
+        with:
+          # Version of the compiler to download, if not provided a default value is used.
+            version: 1.4.30
+            # Install Kotlin/Native tool chain (not needed for compiling jvm programs).
+            install-native: false
+  
       - name: Install roboRio toolchain
         run: ./gradlew installRoboRioToolchain
       - name: Build vendordep
