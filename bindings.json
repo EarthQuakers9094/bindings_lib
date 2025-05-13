@@ -1,13 +1,13 @@
 {
-    "fileName": "ExampleVendorJson.json",
-    "name": "ExampleVendorDep",
+    "fileName": "bindings.json",
+    "name": "Bindings",
     "version": "${version}",
     "frcYear": "2025",
-    "uuid": "Generate A Unique GUID https://guidgenerator.com/online-guid-generator.aspx and insert it here", This line is to purposely make this fail to parse
+    "uuid": "1cf0fc89-ed11-42ea-a08c-0c6d38954e17",
     "mavenUrls": [
-        "ThisNeedsToBeTheRootMavenUrl"
+        "https://earthquakers9094.github.io/bindings_lib/bindings/repos"
     ],
-    "jsonUrl": "InsertSomeUrlHere",
+    "jsonUrl": "https://earthquakers9094.github.io/bindings_lib/bindings/repos/bindings.json",
     "javaDependencies": [
         {
             "groupId": "${groupId}",
