@@ -106,11 +106,11 @@ nativeUtils {
   // }
 }
 
-ext.getCurrentArch = {
-    return NativePlatforms.desktop
-}
+// ext.getCurrentArch = {
+//     return NativePlatforms.desktop
+// }
 
-def systemArch = getCurrentArch()
+// def systemArch = getCurrentArch()
 
 // model {
 //   components {
