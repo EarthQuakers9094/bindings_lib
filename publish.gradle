@@ -49,11 +49,11 @@ ext.addTaskToCopyAllOutputs = { task ->
     copyAllOutputs.from task.archiveFile
 }
 
-def artifactGroupId = 'org.earthquakers9094.bindings'
+def artifactGroupId = 'Bindings'
 def baseArtifactId = 'Bindings'
-def driverZipBaseName = "_GROUP_org_earthquakers9094_bindings_ID_${baseArtifactId}-driver_CLS"
-def zipBaseName = "_GROUP_org_earthquakers9094_bindings_ID_${baseArtifactId}-cpp_CLS"
-def javaBaseName = "_GROUP_org_earthquakers9094_bindings_ID_${baseArtifactId}-java_CLS"
+def driverZipBaseName = "_GROUP_Bindings_ID_${baseArtifactId}-driver_CLS"
+def zipBaseName = "_GROUP_Bindings_bindings_ID_${baseArtifactId}-cpp_CLS"
+def javaBaseName = "_GROUP_Bindings_bindings_ID_${baseArtifactId}-java_CLS"
 
 // task cppHeadersZip(type: Zip) {
 //     destinationDirectory = outputsFolder
