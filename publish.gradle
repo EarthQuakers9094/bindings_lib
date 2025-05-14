@@ -7,7 +7,9 @@ ext.licenseFile = files("$rootDir/LICENSE.txt")
 
 def templateVendorFile = "bindings.json"
 
-def pubVersion = '0.0.1'
+def pubVersion = System.getenv("releaseVersion") ?: "test"
+
+def releasesRepoUrl = "bindings/repos/"
 
 def outputsFolder = file("$buildDir/outputs")
 
@@ -49,9 +51,9 @@ ext.addTaskToCopyAllOutputs = { task ->
 
 def artifactGroupId = 'org.earthquakers9094.bindings'
 def baseArtifactId = 'Bindings'
-def driverZipBaseName = "_GROUP_com_vendor_frc_ID_${baseArtifactId}-driver_CLS"
-def zipBaseName = "_GROUP_com_vendor_frc_ID_${baseArtifactId}-cpp_CLS"
-def javaBaseName = "_GROUP_com_vendor_frc_ID_${baseArtifactId}-java_CLS"
+def driverZipBaseName = "_GROUP_org_earthquakers9094_bindings_ID_${baseArtifactId}-driver_CLS"
+def zipBaseName = "_GROUP_org_earthquakers9094_bindings_ID_${baseArtifactId}-cpp_CLS"
+def javaBaseName = "_GROUP_org_earthquakers9094_bindings_ID_${baseArtifactId}-java_CLS"
 
 // task cppHeadersZip(type: Zip) {
 //     destinationDirectory = outputsFolder
@@ -137,11 +139,11 @@ task outputJavadocJar(type: Jar, dependsOn: javadoc) {
 task vendordepJson() {
     description = 'Builds the vendordep json file.'
     group = 'Build'
-    outputs.file("$buildDir/repos/$templateVendorFile")
+    outputs.file("bindings/bindings.json")
 
     copy {
-        from templateVendorFile
-        into "$buildDir/repos/"
+        from "bindings.json"
+        into "bindings/"
         expand(version: pubVersion,
                 groupId: artifactGroupId,
                 artifactId: baseArtifactId)
@@ -177,8 +179,6 @@ build.dependsOn outputJar
 build.dependsOn vendordepJsonZip
 
 libraryBuild.dependsOn build
-
-def releasesRepoUrl = "$buildDir/repos/releases"
 
 publishing {
     repositories {
