@@ -15,57 +15,6 @@
             "version": "0.0.1"
         }
     ],
-    "jniDependencies": [
-        {
-            "groupId": "Bindings",
-            "artifactId": "Bindings-driver",
-            "version": "0.0.1",
-            "skipInvalidPlatforms": true,
-            "isJar": false,
-            "validPlatforms": [
-                "windowsx86-64",
-                "linuxarm64",
-                "linuxx86-64",
-                "linuxathena",
-                "linuxarm32",
-                "osxuniversal"
-            ]
-        }
-    ],
-    "cppDependencies": [
-        {
-            "groupId": "Bindings",
-            "artifactId": "Bindings-cpp",
-            "version": "0.0.1",
-            "libName": "Vendor",
-            "headerClassifier": "headers",
-            "sharedLibrary": false,
-            "skipInvalidPlatforms": true,
-            "binaryPlatforms": [
-                "windowsx86-64",
-                "linuxarm64",
-                "linuxx86-64",
-                "linuxathena",
-                "linuxarm32",
-                "osxuniversal"
-            ]
-        },
-        {
-            "groupId": "Bindings",
-            "artifactId": "Bindings-driver",
-            "version": "0.0.1",
-            "libName": "VendorDriver",
-            "headerClassifier": "headers",
-            "sharedLibrary": false,
-            "skipInvalidPlatforms": true,
-            "binaryPlatforms": [
-                "windowsx86-64",
-                "linuxarm64",
-                "linuxx86-64",
-                "linuxathena",
-                "linuxarm32",
-                "osxuniversal"
-            ]
-        }
-    ]
+    "jniDependencies": [],
+    "cppDependencies": []
 }
