@@ -3,11 +3,11 @@
   <groupId>bindings</groupId>
   <artifactId>Bindings-java</artifactId>
   <versioning>
-    <latest>test</latest>
-    <release>test</release>
+    <latest>0.0.1</latest>
+    <release>0.0.1</release>
     <versions>
-      <version>test</version>
+      <version>0.0.1</version>
     </versions>
-    <lastUpdated>20250514155427</lastUpdated>
+    <lastUpdated>20250514162828</lastUpdated>
   </versioning>
 </metadata>
