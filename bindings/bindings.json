@@ -1,7 +1,7 @@
 {
     "fileName": "bindings.json",
     "name": "Bindings",
-    "version": "test",
+    "version": "0.0.1",
     "frcYear": "2025",
     "uuid": "1cf0fc89-ed11-42ea-a08c-0c6d38954e17",
     "mavenUrls": [
@@ -12,14 +12,14 @@
         {
             "groupId": "org.earthquakers9094.bindings",
             "artifactId": "Bindings-java",
-            "version": "test"
+            "version": "0.0.1"
         }
     ],
     "jniDependencies": [
         {
             "groupId": "org.earthquakers9094.bindings",
             "artifactId": "Bindings-driver",
-            "version": "test",
+            "version": "0.0.1",
             "skipInvalidPlatforms": true,
             "isJar": false,
             "validPlatforms": [
@@ -36,7 +36,7 @@
         {
             "groupId": "org.earthquakers9094.bindings",
             "artifactId": "Bindings-cpp",
-            "version": "test",
+            "version": "0.0.1",
             "libName": "Vendor",
             "headerClassifier": "headers",
             "sharedLibrary": false,
@@ -53,7 +53,7 @@
         {
             "groupId": "org.earthquakers9094.bindings",
             "artifactId": "Bindings-driver",
-            "version": "test",
+            "version": "0.0.1",
             "libName": "VendorDriver",
             "headerClassifier": "headers",
             "sharedLibrary": false,
