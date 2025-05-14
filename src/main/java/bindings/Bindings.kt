@@ -1,5 +1,4 @@
 import com.pathplanner.lib.auto.NamedCommands
-import com.sun.org.apache.xpath.internal.operations.Bool
 import edu.wpi.first.util.ErrorMessages
 import edu.wpi.first.util.sendable.SendableBuilder
 import edu.wpi.first.wpilibj.DriverStation
