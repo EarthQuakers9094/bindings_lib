@@ -33,8 +33,6 @@ jobs:
       - name: Removing source repo
         run: |
           rm -rf Bindings
-      - name: Setup Kotlin
-        uses: fwilhe2/setup-kotlin@0.2.0
       - name: Install roboRio toolchain
         run: ./gradlew installRoboRioToolchain
       - name: Build vendordep
