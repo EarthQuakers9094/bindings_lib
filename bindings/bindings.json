@@ -1,0 +1,71 @@
+{
+    "fileName": "bindings.json",
+    "name": "Bindings",
+    "version": "test",
+    "frcYear": "2025",
+    "uuid": "1cf0fc89-ed11-42ea-a08c-0c6d38954e17",
+    "mavenUrls": [
+        "https://earthquakers9094.github.io/bindings_lib/bindings/repos"
+    ],
+    "jsonUrl": "https://earthquakers9094.github.io/bindings_lib/bindings/repos/bindings.json",
+    "javaDependencies": [
+        {
+            "groupId": "org.earthquakers9094.bindings",
+            "artifactId": "Bindings-java",
+            "version": "test"
+        }
+    ],
+    "jniDependencies": [
+        {
+            "groupId": "org.earthquakers9094.bindings",
+            "artifactId": "Bindings-driver",
+            "version": "test",
+            "skipInvalidPlatforms": true,
+            "isJar": false,
+            "validPlatforms": [
+                "windowsx86-64",
+                "linuxarm64",
+                "linuxx86-64",
+                "linuxathena",
+                "linuxarm32",
+                "osxuniversal"
+            ]
+        }
+    ],
+    "cppDependencies": [
+        {
+            "groupId": "org.earthquakers9094.bindings",
+            "artifactId": "Bindings-cpp",
+            "version": "test",
+            "libName": "Vendor",
+            "headerClassifier": "headers",
+            "sharedLibrary": false,
+            "skipInvalidPlatforms": true,
+            "binaryPlatforms": [
+                "windowsx86-64",
+                "linuxarm64",
+                "linuxx86-64",
+                "linuxathena",
+                "linuxarm32",
+                "osxuniversal"
+            ]
+        },
+        {
+            "groupId": "org.earthquakers9094.bindings",
+            "artifactId": "Bindings-driver",
+            "version": "test",
+            "libName": "VendorDriver",
+            "headerClassifier": "headers",
+            "sharedLibrary": false,
+            "skipInvalidPlatforms": true,
+            "binaryPlatforms": [
+                "windowsx86-64",
+                "linuxarm64",
+                "linuxx86-64",
+                "linuxathena",
+                "linuxarm32",
+                "osxuniversal"
+            ]
+        }
+    ]
+}

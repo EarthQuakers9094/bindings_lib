@@ -150,15 +150,15 @@ task vendordepJson() {
     }
 }
 
-task vendordepJsonZip(type: Zip) {
-    destinationDirectory = outputsFolder
-    archiveBaseName = "vendordepJson"
+// task vendordepJsonZip(type: Zip) {
+//     destinationDirectory = outputsFolder
+//     archiveBaseName = "vendordepJson"
 
-    from("$buildDir/repos/$templateVendorFile") {
-        into '/'
-    }
-    dependsOn vendordepJson
-}
+//     from("$buildDir/repos/$templateVendorFile") {
+//         into '/'
+//     }
+//     dependsOn vendordepJson
+// }
 
 artifacts {
     archives sourcesJar
@@ -171,12 +171,12 @@ artifacts {
 addTaskToCopyAllOutputs(outputSourcesJar)
 addTaskToCopyAllOutputs(outputJavadocJar)
 addTaskToCopyAllOutputs(outputJar)
-addTaskToCopyAllOutputs(vendordepJsonZip)
+// addTaskToCopyAllOutputs(vendordepJsonZip)
 
 build.dependsOn outputSourcesJar
 build.dependsOn outputJavadocJar
 build.dependsOn outputJar
-build.dependsOn vendordepJsonZip
+// build.dependsOn vendordepJsonZip
 
 libraryBuild.dependsOn build
 
@@ -199,7 +199,7 @@ model {
     publishing {
         def taskList = createComponentZipTasks($.components, ['Vendor'], zipBaseName, Zip, project, includeStandardZipFormat)
 
-        def driverTaskList = createComponentZipTasks($.components, ['VendorDriver'], driverZipBaseName, Zip, project, includeStandardZipFormat)
+        // def driverTaskList = createComponentZipTasks($.components, ['VendorDriver'], driverZipBaseName, Zip, project, includeStandardZipFormat)
 
         publications {
             // cpp(MavenPublication) {
@@ -234,13 +234,13 @@ model {
                 version pubVersion
             }
 
-            vendordep(MavenPublication) {
-                artifact vendordepJsonZip
+            // vendordep(MavenPublication) {
+            //     artifact vendordepJsonZip
 
-                artifactId = "${baseArtifactId}-vendordep"
-                groupId artifactGroupId
-                version pubVersion
-            }
+            //     artifactId = "${baseArtifactId}-vendordep"
+            //     groupId artifactGroupId
+            //     version pubVersion
+            // }
         }
     }
 }
