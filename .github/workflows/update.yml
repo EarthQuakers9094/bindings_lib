@@ -28,9 +28,9 @@ jobs:
           gh repo clone EarthQuakers9094/Bindings -- -b main
       - name: Copy source over
         run: |
-          mkdir -p src/main/java/Bindings/
-          rm -rf src/main/java/Bindings/*
-          cp -r Bindings/*.kt src/main/java/Bindings/
+          mkdir -p src/main/java/bindings/
+          rm -rf src/main/java/bindings/*
+          cp -r Bindings/*.kt src/main/java/bindings/
       - name: Removing source repo
         run: |
           rm -rf Bindings
