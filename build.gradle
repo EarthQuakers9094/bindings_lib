@@ -172,3 +172,5 @@ apply from: 'publish.gradle'
 wrapper {
   gradleVersion '8.11'
 }
+
+apply plugin: 'com.gradleup.shadow'
