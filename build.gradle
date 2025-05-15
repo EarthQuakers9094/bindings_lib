@@ -69,12 +69,12 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
-  dependencies {
-    include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
-    include(dependency('org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1'))
-  }
-}
+// tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+//   dependencies {
+//     include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
+//     include(dependency('org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1'))
+//   }
+// }
 
 // Set up java tests
 test {
