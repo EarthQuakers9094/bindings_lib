@@ -69,6 +69,14 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+kotlin {
+    compilerOptions {
+        freeCompilerArgs.addAll(listOf(
+          -include-runtime
+        ))
+    }
+}
+
 // tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
 //   dependencies {
 //     include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
