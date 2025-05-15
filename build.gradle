@@ -60,6 +60,7 @@ dependencies {
     implementation 'edu.wpi.first.thirdparty.frc2025.opencv:opencv-java:4.10.0-2'
     
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
