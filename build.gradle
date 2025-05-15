@@ -13,6 +13,8 @@ plugins {
   id "com.github.johnrengelman.shadow" version "8.1.1"
 }
 
+
+
 // WPILib Version
 ext.wpilibVersion = "2025.3.2"
 
@@ -65,6 +67,13 @@ dependencies {
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+  dependencies {
+    include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
+    include(dependency('org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1'))
+  }
 }
 
 // Set up java tests
