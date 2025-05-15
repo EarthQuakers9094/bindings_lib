@@ -72,7 +72,7 @@ dependencies {
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll(listOf(
-          -include-runtime
+          "-include-runtime"
         ))
     }
 }
