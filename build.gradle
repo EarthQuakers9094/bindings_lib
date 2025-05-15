@@ -69,13 +69,15 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
-kotlin {
-    compilerOptions {
-        freeCompilerArgs.addAll(listOf(
-          "-include-runtime"
-        ))
+
+
+tasks.jar {
+    // Bundle the Kotlin standard library into your JAR
+    from(configurations.runtimeClasspath) {
+        into("lib")
     }
 }
+
 
 // tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
 //   dependencies {
