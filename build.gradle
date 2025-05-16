@@ -70,23 +70,40 @@ dependencies {
 }
 
 
+// tasks.jar {
+//     // Ensure Kotlin stdlib is bundled into your jar
+//     from(configurations.runtimeClasspath) {
+//         into("lib")
+//     }
+    
+// }
 
-tasks.jar {
-    // Ensure Kotlin stdlib is bundled into your jar
-    from(configurations.runtimeClasspath) {
-        into("lib")
-    }
-}
+// tasks.jar {
+//         manifest {
+//         }
+//         from(sourceSets.named("main").get().output)
+//         dependsOn(configurations.runtimeClasspath)
+//         from({
+//             configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
+//         })
+// }
 
-tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
-    dependencies {
-        include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
-    }
-    mergeServiceFiles() // Merge service files properly
-    manifest {
-        attributes 'Main-Class': 'your.main.class' // Set main class if needed
-    }
-}
+
+// tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
+//     compilerOptions {
+//         freeCompilerArgs.add("-include-runtime")
+//     }
+// }
+
+// tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+//     dependencies {
+//         include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
+//     }
+//     mergeServiceFiles() // Merge service files properly
+//     manifest {
+//         attributes 'Main-Class': 'your.main.class' // Set main class if needed
+//     }
+// }
 
 
 // tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
