@@ -72,9 +72,19 @@ dependencies {
 
 
 tasks.jar {
-    // Bundle the Kotlin standard library into your JAR
+    // Ensure Kotlin stdlib is bundled into your jar
     from(configurations.runtimeClasspath) {
         into("lib")
+    }
+}
+
+tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    dependencies {
+        include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
+    }
+    mergeServiceFiles() // Merge service files properly
+    manifest {
+        attributes 'Main-Class': 'your.main.class' // Set main class if needed
     }
 }
 
