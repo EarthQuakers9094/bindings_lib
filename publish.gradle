@@ -178,6 +178,7 @@ addTaskToCopyAllOutputs(shadowJar)
 build.dependsOn outputSourcesJar
 build.dependsOn outputJavadocJar
 build.dependsOn shadowJar
+build.dependsOn jar
 // build.dependsOn outputJar
 // build.dependsOn vendordepJsonZip
 
