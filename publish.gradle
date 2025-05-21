@@ -38,6 +38,7 @@ task copyAllOutputs(type: Copy) {
     destinationDir file("$buildDir/allOutputs")
     from versionFile
     dependsOn outputVersions
+    dependsOn jar
 }
 
 build.dependsOn copyAllOutputs
@@ -163,7 +164,7 @@ task vendordepJson() {
 artifacts {
     archives sourcesJar
     archives javadocJar
-    // archives outputJar
+    archives jar
     archives outputSourcesJar
     archives outputJavadocJar
     archives shadowJar
@@ -171,7 +172,7 @@ artifacts {
 
 addTaskToCopyAllOutputs(outputSourcesJar)
 addTaskToCopyAllOutputs(outputJavadocJar)
-// addTaskToCopyAllOutputs(outputJar)
+// addTaskToCopyAllOutputs(jar)
 addTaskToCopyAllOutputs(shadowJar)
 // addTaskToCopyAllOutputs(vendordepJsonZip)
 
