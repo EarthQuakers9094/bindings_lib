@@ -114,11 +114,11 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
-task outputJar(type: Jar, dependsOn: classes) {
-    archiveBaseName = javaBaseName
-    destinationDirectory = outputsFolder
-    from sourceSets.main.output
-}
+// task outputJar(type: Jar, dependsOn: classes) {
+//     archiveBaseName = javaBaseName
+//     destinationDirectory = outputsFolder
+//     from sourceSets.main.output
+// }
 
 task outputSourcesJar(type: Jar, dependsOn: classes) {
     archiveBaseName = javaBaseName
@@ -163,19 +163,22 @@ task vendordepJson() {
 artifacts {
     archives sourcesJar
     archives javadocJar
-    archives outputJar
+    // archives outputJar
     archives outputSourcesJar
     archives outputJavadocJar
+    archives shadowJar
 }
 
 addTaskToCopyAllOutputs(outputSourcesJar)
 addTaskToCopyAllOutputs(outputJavadocJar)
-addTaskToCopyAllOutputs(outputJar)
+// addTaskToCopyAllOutputs(outputJar)
+addTaskToCopyAllOutputs(shadowJar)
 // addTaskToCopyAllOutputs(vendordepJsonZip)
 
 build.dependsOn outputSourcesJar
 build.dependsOn outputJavadocJar
-build.dependsOn outputJar
+build.dependsOn shadowJar
+// build.dependsOn outputJar
 // build.dependsOn vendordepJsonZip
 
 libraryBuild.dependsOn build
@@ -183,7 +186,6 @@ libraryBuild.dependsOn build
 publishing {
     repositories {
         maven {
-
             url = releasesRepoUrl
         }
     }
@@ -225,7 +227,7 @@ model {
             // }
 
             java(MavenPublication) {
-                artifact jar
+                artifact shadowJar
                 artifact sourcesJar
                 artifact javadocJar
 

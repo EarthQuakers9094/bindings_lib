@@ -20,6 +20,7 @@ ext.wpilibVersion = "2025.3.2"
 
 repositories {
   mavenCentral()
+  gradlePluginPortal()
 }
 if (project.hasProperty('releaseMode')) {
   wpilibRepositories.addAllReleaseRepositories(project)
@@ -64,54 +65,23 @@ dependencies {
     
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1"
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+
 
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.1'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
+    dependencies {
+        include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
+        include(dependency('org.jetbrains.kotlin:kotlin-reflect'))
+    }
+    mergeServiceFiles() // Merge service files properly
+    archiveClassifier.set("")
+    manifest {}
+}
 
-// tasks.jar {
-//     // Ensure Kotlin stdlib is bundled into your jar
-//     from(configurations.runtimeClasspath) {
-//         into("lib")
-//     }
-    
-// }
-
-// tasks.jar {
-//         manifest {
-//         }
-//         from(sourceSets.named("main").get().output)
-//         dependsOn(configurations.runtimeClasspath)
-//         from({
-//             configurations.runtimeClasspath.get().filter { it.name.endsWith("jar") }.map { zipTree(it) }
-//         })
-// }
-
-
-// tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile) {
-//     compilerOptions {
-//         freeCompilerArgs.add("-include-runtime")
-//     }
-// }
-
-// tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
-//     dependencies {
-//         include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
-//     }
-//     mergeServiceFiles() // Merge service files properly
-//     manifest {
-//         attributes 'Main-Class': 'your.main.class' // Set main class if needed
-//     }
-// }
-
-
-// tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar) {
-//   dependencies {
-//     include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
-//     include(dependency('org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1'))
-//   }
-// }
 
 // Set up java tests
 test {
@@ -210,4 +180,5 @@ wrapper {
   gradleVersion '8.11'
 }
 
+apply plugin: 'java'
 apply plugin: 'com.gradleup.shadow'
