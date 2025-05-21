@@ -76,6 +76,7 @@ tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.Shadow
     dependencies {
         include(dependency('org.jetbrains.kotlin:kotlin-stdlib'))
         include(dependency('org.jetbrains.kotlin:kotlin-reflect'))
+        include(dependency('org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1"'))
     }
     mergeServiceFiles() // Merge service files properly
     archiveClassifier.set("")
