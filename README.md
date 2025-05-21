@@ -1,25 +1,99 @@
-# WPILib Vendor Template
+# Bindings Lib 
+(the name is a work in progress)
 
-This is the base WPILib vendor template for 2025.
+## Installation
+* install as vendordep https://earthquakers9094.github.io/bindings_lib/bindings/bindings.json
+* thats it
 
-## Layout
+## Using
+the main class of this library is `bindings.Bindings`
+* Constructor Bindings(`driver`, `operator`, `constants`)
+  * takes a `driver` and an `operator` to lock the program to (or null not to do this)
+     * this is recommended for competition because it enables the driver and operator to be loaded during robot inititaliaztion instead of when you call resetCommands for the first time
+     * you can unlock the driver and operator by pressing the unlock button on smartdashboard or calling `unlockDrivers()` on the Bindings object
+  * the it takes another argument called `constants` you just pass in an instance of the class (the values of the properties of the class don't matter) containing the constants that you want to manage with the bindings
+* getConstants()
+  * returns the `constants` structure that you passed in with it's data filled in using the current drivers and global constants configuration (before the drivers are know the drivers constants are just initialized to their default values)
+* resetCommands()
+  * this is used to refresh the bindings and constants that the library manages it is recommended to call this at the start of teleop (if no changes have been made it will won't reload the constants and bindings)
 
-The build is split into 3 libraries. A java library is built. This has access to all of wpilib, and also can JNI load the driver library.
+the other main class to be aware of is `bindings.Constant` this is used in the constants structure to provide a constant that you can lister for changes on
+* Constructor Constant(`value`)
+  * does't matter what `value` is inititalized to it is only used for it's type
+* getValue()
+   * gets the current value of the constant
+* addListener((v: Value) -> Unit?)
+   * registers a listener in the form of a lamba to allow the user of the library to listen for changes in the constant (ie to update pid values on motor controllers)
 
-A driver library is built. This should contain all low level code you want to access from both C++, Java and any other text based language. This will not work with LabVIEW. This library has access to the WPILib HAL and wpiutil. This library can only export C symbols. It cannot export C++ symbols at all, and all C symbols must be explicitly listed in the symbols.txt file in the driver folder. JNI symbols must be listed in this file as well. This library however can be written in C++. If you attempt to change this library to have access to all of wpilib, you will break JNI access and it will no longer work.
+## Example
+* RobotContainers constuctor
+```java
+NamedCommands.registerCommand("log a", new InstantCommand(() -> {
+      int val = bindings.getConstants().val;
 
-A native C++ library is built. This has access to all of wpilib, and access to the driver library. This should implment the standard wpilib interfaces.
+      DriverStation.reportWarning("logging a " + val, false);
+    }));
 
-## Customizing
-For Java, the library name will be the folder name the build is started from, so rename the folder to the name of your choosing. 
+    // Named Commands are from pathplanner and it is how this library gets the actual commands from their names
+    // that way you don't have add commands to both pathplanner and this library
+    NamedCommands.registerCommand("log b", new InstantCommand(() -> {
+      int b = bindings.getConstants().driver.b.getValue();
 
-For the native impl, you need to change the library name in the exportsConfigs block of build.gradle, the components block of build.gradle, and the taskList input array name in publish.gradle.
+      DriverStation.reportWarning("logging b " + b, false);
+    }));
+    
+    NamedCommands.registerCommand("log c", new InstantCommand(() -> {
 
-For the driver, change the library name in privateExportsConfigs, the driver name in components, and the driverTaskList input array name. In addition, you'll need to change the `lib library` in the native C++ impl component, and the JNI library name in the JNI java class.
+      DriverStation.reportWarning("logging c", false);
+    }));
 
-For the maven artifact names, those are all in publish.gradle about 40 lines down.
+    // locks the driver to john_doe and leaves the operator free to be selected
+    // (note it doesn't really matter which one is which it only influences
+    // priority when it comes to driver constants)
+    bindings = new Bindings("john_doe", null, new Constants());
 
-## Building and editing
-This uses gradle, and uses the same base setup as a standard GradleRIO robot project. This means you build with `./gradlew build`, and can install the native toolchain with `./gradlew installRoboRIOToolchain`. If you open this project in VS Code with the wpilib extension installed, you will get intellisense set up for both C++ and Java.
+    bindings.getConstants().driver.b.addListener((n) -> {
+      DriverStation.reportWarning("b changed to: " + n, false);
+      return null;
+    });
+```
+* Constants File
+```java
+import bindings.Constant;
 
-By default, this template builds against the latest WPILib development build. To build against the last WPILib tagged release, build with `./gradlew build -PreleaseMode`.
+public class Constants {
+  // supported types for constants are currently strings, ints, and doubles,
+  // or Constants<T> to be able to listen to changes 
+  public int val;
+
+  // other objects are allowed to exist in the constants object
+  // they have the same requirements as the Constants class in
+  // terms of their members
+  public Driver driver;
+
+  public static class Driver {
+    // wrapping it in the constants class allows you to listen for changes
+    // with addListener and you can retreive the value it has with getValue
+    public Constant<Integer> b;
+
+    public Driver() {
+      // this value doesn't matter it just needs to be initialized at some point
+      this.b = new Constant<>(0);
+    }
+  }
+
+  public Constants() {
+    // these values don't matter they just need to be initialized at some point
+    this.val = 0;
+    this.driver = new Driver();
+  }
+}
+```
+## GUI
+Available at https://github.com/EarthQuakers9094/bindings_gui
+### Usage
+locked tabs (made to prevent the driver team from accidentally touching something they aren't supposed to not meant to be secure) password `theyWillNeverKnow!`
+
+add the commands that can be bound in the manage commands tab (can't bind a command without first adding it)
+
+switch profiles in the profiles tab
