@@ -81,6 +81,7 @@ tasks.named('shadowJar', com.github.jengelman.gradle.plugins.shadow.tasks.Shadow
     mergeServiceFiles() // Merge service files properly
     archiveClassifier.set("")
     manifest {}
+    minimize()
 }
 
 
