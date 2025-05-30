@@ -1,7 +1,7 @@
 {
     "fileName": "bindings.json",
     "name": "Bindings",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "frcYear": "2025",
     "uuid": "1cf0fc89-ed11-42ea-a08c-0c6d38954e17",
     "mavenUrls": [
@@ -12,7 +12,7 @@
         {
             "groupId": "bindings",
             "artifactId": "Bindings-java",
-            "version": "0.0.7"
+            "version": "0.0.8"
         }
     ],
     "jniDependencies": [],
